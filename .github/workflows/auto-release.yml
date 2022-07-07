@@ -21,4 +21,4 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          bodyFile: release-notes/opensearch.release-notes-${{steps.tag.outputs.tag}}.md
+          bodyFile: release-notes/opensearch.release-notes-2.0.1.md
