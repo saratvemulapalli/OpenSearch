@@ -17,4 +17,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
           title: ${{steps.tag.outputs.tag}}
-          files: release-notes/opensearch.release-notes-2.0.1.md
