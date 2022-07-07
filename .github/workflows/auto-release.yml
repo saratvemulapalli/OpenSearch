@@ -3,7 +3,7 @@ name: Releases
 on:
   push:
     tags:
-      - '*'
+      - '*.*.*'
 
 jobs:
 
@@ -12,8 +12,13 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Get tag
+        id: tag
+        uses: dawidd6/action-get-tag@v1
+      - name: Use tag
+        run: echo ${{steps.tag.outputs.tag}}
       - uses: actions/checkout@v2
       - uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          omitBodyDuringUpdate: true
+          bodyFile: release-notes/opensearch.release-notes-${{steps.tag.outputs.tag}}.md
