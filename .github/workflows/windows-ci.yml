@@ -1,4 +1,4 @@
-name: Gradle Precommit
+name: Gradle Check Windows
 on: [pull_request]
  
 jobs:
