@@ -13,9 +13,14 @@ import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.opensearch.common.concurrent.RefCountedReleasable;
+import static com.jayway.jsonpath.JsonPath.read;
+import com.jayway.jsonpath.JsonPath;
+
+
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Handles the shutdown of the wrapped {@link software.amazon.awssdk.services.s3.S3AsyncClient} using reference
@@ -24,7 +29,8 @@ import java.io.IOException;
 public class AmazonAsyncS3Reference extends RefCountedReleasable<AmazonAsyncS3WithCredentials> {
 
     private static final Logger logger = LogManager.getLogger(AmazonAsyncS3Reference.class);
-
+    String json = "...";
+    List<String> authors = JsonPath.read(json, "$.store.book[*].author");
     AmazonAsyncS3Reference(AmazonAsyncS3WithCredentials client) {
         super("AWS_S3_CLIENT", client, () -> {
             client.client().close();

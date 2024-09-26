@@ -94,6 +94,9 @@ dependencies {
   api "io.netty:netty-transport-native-unix-common:${versions.netty}"
   api "io.netty:netty-transport-classes-epoll:${versions.netty}"
 
+  // Adding a test dependency
+  implementation group: 'com.jayway.jsonpath', name: 'json-path', version: '2.9.0'
+
   // HACK: javax.xml.bind was removed from default modules in java 9, so we pull the api in here,
   // and allowlist this hack in JarHell
   api 'javax.xml.bind:jaxb-api:2.3.1'
